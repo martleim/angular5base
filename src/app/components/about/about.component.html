@@ -1,0 +1,58 @@
+
+  <div class="form-field-container">
+
+      <mat-nav-list>
+          <mat-list-item *ngFor="let element of values">
+             {{ element.name }}
+             <button mat-icon-button (click)="loadElement(element)">
+                <mat-icon>info</mat-icon>
+             </button>
+          </mat-list-item>
+        </mat-nav-list>
+
+      <mat-form-field>
+        <input matInput placeholder="Id" [(ngModel)]="element.id">
+      </mat-form-field>
+    
+      <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="element.name">
+        </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Textarea" [(ngModel)]="element.other"></textarea>
+      </mat-form-field>
+    
+      <!--mat-form-field>
+        <mat-select placeholder="Select" [(value)]="selected">
+          <mat-option value="option">Option</mat-option>
+          <mat-option value="48">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+
+        </mat-select>
+      </mat-form-field-->
+
+      <div class="col-md-3">
+
+        <h3>Select files</h3>
+
+
+        <div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+          <h1>Drag &amp; Drop</h1>
+        </div>
+         
+        <label class="upload-button">
+          <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+          or choose file(s)
+        </label>
+         
+        <button type="button" class="start-upload-btn" (click)="startUpload()">
+          Start Upload
+        </button>
+
+       
+    </div>
+      <button mat-icon-button (click)="saveElement()">
+          <mat-icon>Save</mat-icon>
+       </button>
+    </div>
+
+
